@@ -12,8 +12,14 @@ const ExerciseTwo = () => {
     // Instructions:
     // • Create an interface `CartItem` and replace the param's type with it
     // • Make variantId optional
+
+    interface CartItem { 
+      id: number; 
+      title: string; 
+      variantId?: number 
+    }
   
-    function addToCart(item: { id: number; title: string; variantId: number }) {
+    function addToCart(item: CartItem ) {
       console.log('[Exercise 2.1]', `Adding "${item.title}" to cart.`)
     }
   
@@ -24,7 +30,11 @@ const ExerciseTwo = () => {
     // • Create and implement an interface on `Person` to ensure it always has accessible
     //   `name` and `age` member properties.
   
-    class Person {
+    interface Person {
+      name: string;
+      age: number;
+    }
+    class Person implements Person {
       constructor(public name: string, public age: number) {}
     }
   
@@ -44,6 +54,18 @@ const ExerciseTwo = () => {
       name: string
     }
     // [/do not edit]
+
+    interface Coords {
+      latitude: number;
+      longitude: number;
+    }
+    // interface Place extends City{
+    //   coords: Coords
+    // }
+
+    interface City {
+      coords: Coords
+    }
   
     const montreal = {
       coords: {
@@ -55,11 +77,14 @@ const ExerciseTwo = () => {
   
     const tampa = {
       coords: {
-        latitude: '27.9478',
-        longitude: '-82.4584',
+        latitude: 27.9478,
+        longitude: -82.4584,
       },
       name: 'Tampa',
     }
+
+    // string | number <---- union
+    // string & number <----- intersection
   
     function getCityInfo(city: City) {
       const coords = `(${city.coords.latitude.toFixed(
