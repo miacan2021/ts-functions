@@ -4,10 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start":"node exercise-basic/ts-basic.js",
-    "dev":"ts-node exercise-basic/ts-basic.ts"
+    "start": "node exercise-functions/ts-functions.js",
+    "dev": "ts-node exercise-functions/ts-functions.ts"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^16.11.11"
+  }
 }
