@@ -14,11 +14,11 @@ const ExerciseThree = () => {
   // • Add explicit parameter types and return type
   // • Fix any errors resulting from invalid types
 
-  function add(x:number, y:number) {
+  function add(x:number, y:number): number{
     return x + y
   }
 
-  function sumArray(numbers:number[]): number {
+  function sumArray(numbers: number[]): number {
     return numbers.reduce(add, 0)
   }
 
@@ -33,7 +33,7 @@ const ExerciseThree = () => {
 
   const bankAccount = {
     money: 0,
-    deposit(value:number, message?:string) {
+    deposit(value: number, message?:  string): void {
       this.money += value
       if (message) {
         console.log(message)
@@ -53,10 +53,10 @@ const ExerciseThree = () => {
 
   function computeScore(word: string): number {
     const letters = word.toUpperCase().split('')
-    return letters.reduce((accum: number, curr:string) => (accum += getPointsFor(curr)), 0)
+    return letters.reduce((accum: number, curr: string) => (accum += getPointsFor(curr)), 0)
   }
 
-  function getPointsFor(letter: string) {
+  function getPointsFor(letter: string): number {
     const lettersAndPoints: [string,number][] = [
       ['AEOIULNRST', 1],
       ['DG', 2],
@@ -67,8 +67,8 @@ const ExerciseThree = () => {
       ['QZ', 10],
     ]
 
-    return lettersAndPoints.reduce((computedScore:number, pointsTuple:[string,number]):number => {
-      const [letters, score] = pointsTuple
+    return lettersAndPoints.reduce((computedScore: number, pointsTuple:[string,number]): number => {
+      const [letters, score]: [string, number] = pointsTuple
       if (letters.split('').find((ll) => ll === letter)) {
         return (computedScore += score)
       }
@@ -97,13 +97,13 @@ const ExerciseThree = () => {
   // • Add parameter type annotation
   // • Even though this function doesn't return, add an explicit return type
 
-  function layEggs(quantity?: number, color?: string): void{
+  function layEggs(quantity: number, color: string): void{
     console.log(
       `[Exercise 3.5] You just laid ${quantity} ${color} eggs. Good job!`
     )
   }
 
-  layEggs()
+  layEggs(1, 'white')
 
   // ======== Exercise 3.6 ========
   // Here we've initialized two variables with function types.
@@ -146,19 +146,19 @@ const ExerciseThree = () => {
 
 
 
-  function pushToCollection<T,U>(item:T|T[], collection:T[]|U):T[]|U{
+  function pushToCollection<T>(item: T, collection: T[]): T[]{
     collection.push(item)
     return collection
   }
 
   // Add some stuff to the collections
-  pushToCollection(false, stringCollection)
+  pushToCollection('false', stringCollection)
   pushToCollection('hi', stringCollection)
-  pushToCollection([], stringCollection)
+  pushToCollection('[]', stringCollection)
 
-  pushToCollection('1', numberCollection)
-  pushToCollection('2', numberCollection)
-  pushToCollection('3', numberCollection)
+  pushToCollection(1, numberCollection)
+  pushToCollection(2, numberCollection) 
+  pushToCollection(3, numberCollection)
 
   const incrementedByTwo = numberCollection.map((num) => num + 2)
 
